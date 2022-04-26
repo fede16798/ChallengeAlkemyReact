@@ -1,0 +1,31 @@
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    text-align: center;
+    width: 100%;
+    height: 14.3rem;
+    background-color: black;
+    color: white;
+}
+
+.footer-div-logo {
+    background-color: green;
+    height: 100px;
+    width: 250px;
+}
+
+.footer-navbar {
+    width: 70%;
+}
+
+.footer-navbar-ul {
+    list-style: none;
+} 
+
+.footer-navbar-p {
+    margin-top: .2rem;
+    margin-bottom: .2rem;
+}

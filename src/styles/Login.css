@@ -1,0 +1,54 @@
+.login-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 3rem;
+}
+
+.login-container h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+    padding: 3rem;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 2px 1px rgb(0 0 0 / 100%);
+}
+
+.form-label {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.form-label span {
+    margin-bottom: 7px;
+    font-size: 1.2rem;
+}
+
+.form-label input {
+    padding: 1rem;
+    font-size: 1.2rem;
+
+}
+
+.form-button {
+    width: 100%;
+    padding: 1.8rem;
+    margin-top: 2rem;
+    margin-bottom: -.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #fff;
+    border: none;
+    background: #0a9032;
+    cursor: pointer;
+}
