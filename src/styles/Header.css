@@ -7,11 +7,13 @@
 }
 
 .container-logo {
-    width: 200px;
-    height: 100%;
-
+    width: 130px;
+    align-self: flex-end;
     justify-self: flex-start;
-    background: red;
+}
+
+.container-logo img {
+    margin: 1rem;
 }
 
 .navbar{
@@ -30,9 +32,12 @@
 }
 
 .navbar-ul__li{
-    text-decoration: none;
     font-size: 1.2rem;
     font-weight: 500;
     margin: 0 1.3rem;
     color: #fff;
+}
+
+.navbar-ul__li a{
+    text-decoration: none;
 }

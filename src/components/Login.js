@@ -2,6 +2,7 @@ import swAlert from '@sweetalert/with-react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Login.css';
 import setLogin from '../services/Login.service.js';
+import logo from '../images/logo-app.svg';
 
 
 const Login = () => {
@@ -28,10 +29,10 @@ const Login = () => {
                 const tokenRecibido = res.data.token;
                 localStorage.setItem('token', tokenRecibido );
                 swAlert('Perfecto', 'Ingresaste correctamente', 'success');
-                navigate('/listado');
+                navigate('/');
             })
             .catch(err => {
-                if(err){
+                if(err) {
                     console.log(err);
                     swAlert('Error', 'Credenciales invalidas', 'error');
                 } else {
@@ -43,17 +44,18 @@ const Login = () => {
 
     return (
         <div className="login-container">
-            <h2> Formulario de login</h2>
+            <div class='logo-container'>
+                <img src={logo} alt='logo app' />
+            </div>
             <form onSubmit={submitHandler} className="form">
+                <h3>Inicia sesión</h3>
                 <label className="form-label">
-                    <span>Correo Electronico</span>
-                    <input type="email" name="email" />
+                    <input type="email" name="email" placeholder='Correo electronico'/>
                 </label>
                 <label className="form-label">
-                    <span>Password</span>   
-                    <input type="password" name="password" />
+                    <input type="password" name="password" placeholder='Contraseña'/>
                 </label>
-                <button type="submit" className="form-button">Ingresar</button>
+                <button type="submit" className="form-button">INICIAR SESION</button>
             </form>
         </div>
     );
