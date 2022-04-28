@@ -1,7 +1,7 @@
 .header {
     display: flex;
 
-    width: 100vw;
+    width: 100%;
     height: 5rem;
     background: black;
 }
@@ -16,12 +16,12 @@
     margin: 1rem;
 }
 
-.navbar{
+.nav{
     margin-left: 1rem;
     width: 100%;    
 }
 
-.navbar-ul { 
+.nav-ul { 
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -31,13 +31,13 @@
     height: 100%;
 }
 
-.navbar-ul__li{
+.nav-ul__li{
     font-size: 1.2rem;
     font-weight: 500;
     margin: 0 1.3rem;
     color: #fff;
 }
 
-.navbar-ul__li a{
+.nav-ul__li a{
     text-decoration: none;
 }
