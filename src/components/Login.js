@@ -37,11 +37,11 @@ const Login = () => {
       .catch(err => {
           handleError('Error', 'Credenciales invalidas', 'error');
     })
-}
+  }
 
   return (
     <div className="login-container">
-      <div class='logo-container'>
+      <div className='logo-container'>
           <img src={logo} alt='logo app' />
       </div>
       <form onSubmit={submitHandler} className="form">

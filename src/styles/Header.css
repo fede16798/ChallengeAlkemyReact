@@ -27,17 +27,25 @@
     align-items: center;
 
     list-style: none;
-
     height: 100%;
 }
 
 .nav-ul__li{
-    font-size: 1.2rem;
     font-weight: 500;
     margin: 0 1.3rem;
     color: #fff;
+    font-size: 1.2rem;
 }
 
 .nav-ul__li a{
     text-decoration: none;
+}
+
+.nav-btn {
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    padding: 0 3rem;
+    font-weight: 500;
 }

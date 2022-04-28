@@ -18,3 +18,9 @@ h2,h3{
 .swiper-slide img:hover {
   transform: scale(1.1); 
 }
+
+.listado-container__p {
+  font-size: 1.2rem;
+  margin-left: 2rem;    
+  color: #db1d30;
+}

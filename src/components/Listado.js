@@ -19,11 +19,10 @@ const Listado = () => {
     const [movies, setMovies] = useState([]);
     const [moviesTrending, setMoviesTrending] = useState([]);
 
-    const urlListMovies = 'https://api.themoviedb.org/3/discover/movie?api_key=44a71ca256a24dd1ea2fbb016327c9c3&language=es-ES&page=1';
-    const urlTrendingMovies = 'https://api.themoviedb.org/3/trending/movie/day?api_key=44a71ca256a24dd1ea2fbb016327c9c3';
+    //const urlListMovies = 'https://api.themoviedb.org/3/discover/movie?api_key=44a71ca256a24dd1ea2fbb016327c9c3&language=es-ES&page=1';
 
     useEffect(() => {
-        getMovies(urlListMovies) 
+        getMovies() 
         .then(res => {
             setMovies(res.data.results);
         })  
@@ -33,7 +32,7 @@ const Listado = () => {
     }, [setMovies]);
     
     useEffect(() => {
-        getTrendingMoviesPerWeek(urlTrendingMovies)
+        getTrendingMoviesPerWeek()
             .then(res => {
                 setMoviesTrending(res.data.results);
             })
@@ -44,23 +43,28 @@ const Listado = () => {
 
     return (
         <div className='listado-container'>
-            <h2>Novedades</h2>
-            <Swiper
-                slidesPerView={5}
-                spaceBetween={0}
-                pagination={{
-                clickable: true,
-                }}
-                modules={[Pagination]}
-                className='mySwiper'
-            >
-            {
-                movies.map((movie) => {
-                    return (<SwiperSlide key={movie.id}><Movie poster = {`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} id={movie.id}/></SwiperSlide>)
-                })
+            <h2>News</h2>
+            {( movies.length == 0 )? <p className='listado-container__p'>There was an error loading the new movies</p>
+            :   
+                <Swiper
+                    slidesPerView={5}
+                    spaceBetween={0}
+                    pagination={{
+                    clickable: true,
+                    }}
+                    modules={[Pagination]}
+                    className='mySwiper'
+                >
+                {
+                    movies.map((movie) => {
+                        return (<SwiperSlide key={movie.id}><Movie poster = {`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} id={movie.id}/></SwiperSlide>)
+                    })
+                }
+                </Swiper>             
             }
-            </Swiper>
-            <h3>Tendencias</h3>
+            <h3>Trending</h3>
+            {( moviesTrending.length == 0 )? <p className='listado-container__p'>There was an error loading the trending movies</p> 
+            :
             <Swiper
                 slidesPerView={5}
                 spaceBetween={0}
@@ -76,6 +80,7 @@ const Listado = () => {
                 })
             }
             </Swiper>
+            }
         </div>
     );
 }
