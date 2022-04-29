@@ -12,7 +12,6 @@ import '../../styles/Movies.css';
 import handleError from '../../handleErrors/HandleError.js';
 //import exterrnal styles and components
 import '../../styles/SwiperSlide.css';
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
 

@@ -18,7 +18,7 @@ const Movies = () => {
     const [moviesTrending, setMoviesTrending] = useState([]);
 
     useEffect(() => {
-        getMovies() 
+        getMovies()
         .then(res => {
             setMovies(res.data.results);
         })  
@@ -26,7 +26,7 @@ const Movies = () => {
             handleError("Something went wrong. Please try again", "There was an error loading the movies", "error");
         });
     }, [setMovies]);
-    
+
     useEffect(() => {
         getTrendingMoviesPerWeek()
             .then(res => {

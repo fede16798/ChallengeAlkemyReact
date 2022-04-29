@@ -3,26 +3,27 @@ import axios from 'axios';
 const baseUrl = 'https://api.themoviedb.org/3';
 const apiKey = '44a71ca256a24dd1ea2fbb016327c9c3';
 
-const getMovies = () => {
+const getMovies =  async () => {
     const urlGetMovies = `${baseUrl}/discover/movie?api_key=${apiKey}&language=es-ES&page=1`;
-    return axios.get(urlGetMovies);
+    let data =  await axios.get(urlGetMovies); 
+    return data;   
 }
 
-const getTrendingMoviesPerWeek = () => {
+const getTrendingMoviesPerWeek = async () => {
     const urlTrendingMovies = `${baseUrl}/trending/movie/day?api_key=${apiKey}`;
-    return axios.get(urlTrendingMovies);
+    let data = await axios.get(urlTrendingMovies);
+    return data;
 }
 
-const getMovieById = (id) => {
+const getMovieById = async (id) => {
     const urlGetMoviById = `${baseUrl}/movie/${id}?api_key=${apiKey}&language=en-US`;
-
-    return axios.get(urlGetMoviById);
+    let data = await axios.get(urlGetMoviById);
+    return data;
 }
 
-const getSimiliarMovies = (id) => {
+const getSimiliarMovies = async (id) => {
     const urlGetSmilarMovies =`${baseUrl}/movie/${id}/similar?api_key=${apiKey}&language=en-US&page=1`;
-
-    return axios.get(urlGetSmilarMovies);
+    return await axios.get(urlGetSmilarMovies);
 }
 
 export {getMovies, getTrendingMoviesPerWeek, getMovieById, getSimiliarMovies};
