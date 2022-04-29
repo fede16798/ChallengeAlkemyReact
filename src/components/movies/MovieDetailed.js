@@ -1,25 +1,22 @@
 //import hooks
-import { Navigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 //import services
-import  { getMovieById, getSimiliarMovies } from '../services/Movies.service.js';
+import  { getMovieById, getSimiliarMovies } from '../../services/Movies.service.js';
 //import component
-import Header from '../components/Header.js';
-import Movie from '../components/Movie.js';
+import Movie from './Movie.js';
 //import styles
-import '../styles/MovieDetailed.css';
-import '../styles/Listado.css';
+import '../../styles/MovieDetailed.css';
+import '../../styles/Movies.css';
 //import functions
-import handleError from '../handleErrors/HandleError.js';
+import handleError from '../../handleErrors/HandleError.js';
 //import exterrnal styles and components
-import "swiper/css";
-import "swiper/css/pagination";
+import '../../styles/SwiperSlide.css';
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
 
 const MovieDetailed = () => {
-
-  const token = localStorage.getItem('token');
   
   let id = useParams().id;
   
@@ -48,13 +45,11 @@ const MovieDetailed = () => {
 
   return (
     <>
-      { !token && <Navigate to='/login' />}
       { !movie && <h1>Hubo un error</h1> }
       { movie &&
         <>
-          <Header />
-          <div className='movie-container'>
-            <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt='portada de la peliluca' className='movie-container__img' />
+          <div className='movieDetailed-container'>
+            <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt='portada de la peliluca' className='movieDetailed-container__img' />
             <div className='overview-container'>
               <h3 className='overview-container__h3'>{movie.original_title}</h3>
               <p className='overview-container__p'>{movie.overview}</p>

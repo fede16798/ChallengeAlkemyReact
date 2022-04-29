@@ -1,0 +1,11 @@
+.movie-container {
+  padding: 1rem;
+  padding-top: 0;
+}
+
+
+.movie-container__p {
+  font-size: 1.2rem;
+  margin-left: 2rem;    
+  color: #db1d30;
+}

@@ -1,25 +1,21 @@
 //import hooks
 import { useState, useEffect } from 'react';
 //import components
-import Movie from '../components/Movie.js';
+import Movie from './Movie.js';
 //import styles
-import '../styles/Listado.css';
+import '../../styles/Movies.css';
 //import functions
-import handleError from '../handleErrors/HandleError.js';
-import  { getMovies, getTrendingMoviesPerWeek } from '../services/Movies.service.js';
-//import exterrnal styles and components
-import "swiper/css";
-import "swiper/css/pagination";
+import handleError from '../../handleErrors/HandleError.js';
+import  { getMovies, getTrendingMoviesPerWeek } from '../../services/Movies.service.js';
+//import Swiper
+import '../../styles/SwiperSlide.css';
 import { Swiper, SwiperSlide } from "swiper/react";
-// import required modules
 import { Pagination } from "swiper";
 
-const Listado = () => {
+const Movies = () => {
 
     const [movies, setMovies] = useState([]);
     const [moviesTrending, setMoviesTrending] = useState([]);
-
-    //const urlListMovies = 'https://api.themoviedb.org/3/discover/movie?api_key=44a71ca256a24dd1ea2fbb016327c9c3&language=es-ES&page=1';
 
     useEffect(() => {
         getMovies() 
@@ -42,9 +38,9 @@ const Listado = () => {
     }, [setMoviesTrending]);
 
     return (
-        <div className='listado-container'>
+        <div className='movie-container'>
             <h2>News</h2>
-            {( movies.length == 0 )? <p className='listado-container__p'>There was an error loading the new movies</p>
+            {( movies.length == 0 )? <p className='movie-container__p'>There was an error loading the new movies</p>
             :   
                 <Swiper
                     slidesPerView={5}
@@ -63,7 +59,7 @@ const Listado = () => {
                 </Swiper>             
             }
             <h3>Trending</h3>
-            {( moviesTrending.length == 0 )? <p className='listado-container__p'>There was an error loading the trending movies</p> 
+            {( moviesTrending.length == 0 )? <p className='movie-container__p'>There was an error loading the trending movies</p> 
             :
             <Swiper
                 slidesPerView={5}
@@ -85,7 +81,7 @@ const Listado = () => {
     );
 }
 
-export default Listado;
+export default Movies;
 
     /*const navigate = useNavigate();
 
