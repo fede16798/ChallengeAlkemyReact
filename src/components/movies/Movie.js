@@ -1,7 +1,5 @@
 import '../../styles/Movie.css';
 import { Link } from 'react-router-dom';
-import '../../styles/SwiperSlide.css';
-
 
 const Movie = ({ poster, id }) => {
   return(

@@ -9,4 +9,16 @@ const getSeries = async () => {
     return await axios.get(urlGetSeries);
 }
 
-export { getSeries };
+const getSeriesById = async (id) => {
+    const urlGetSeriesById = `${baseUrl}/tv/${id}?api_key=${apiKey}&language=en-US`;
+    return await axios.get(urlGetSeriesById);
+}
+
+const getSimilarSeries = async (id) => {
+    const urlGetSimilarSeriesById = `${baseUrl}/tv/${id}/similar?api_key=${apiKey}&language=en-US&page=1`;
+    let data = await axios.get(urlGetSimilarSeriesById);
+    console.log(data.data.results);
+    return data;
+}
+
+export { getSeries, getSeriesById, getSimilarSeries};

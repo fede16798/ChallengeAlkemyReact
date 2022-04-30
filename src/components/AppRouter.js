@@ -7,7 +7,8 @@ import HomePage from '../pages/HomePage.js';
 import DetailMoviePage from '../pages/DetailMoviePage.js';
 import SeriesPage from '../pages/SeriesPage.js';
 import MoviesPage from '../pages/MoviesPage.js';
-
+import DetailsSeries from '../pages/DetailSeriesPage.js';
+import SearchPage from '../pages/SeachPage.js';
 
 const AppRouter = () => { 
   return(
@@ -18,6 +19,8 @@ const AppRouter = () => {
         <Route path='/movies' element={<MoviesPage />} />
         <Route path='/movies/:id' element={<DetailMoviePage />} />
         <Route path='/series' element={<SeriesPage />} />
+        <Route path='/series/:id' element={<DetailsSeries />} />
+        <Route path='/search/:keyword' element={<SearchPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>

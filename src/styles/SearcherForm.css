@@ -1,0 +1,13 @@
+.search-form {
+    background-color: #fff; 
+    height: 100%;
+    width: 400px;
+    margin-right: 5rem;
+}
+.search-form__input {
+    background-color: #fff; 
+    height: 100%;
+    width: 100%;
+    color: black;    padding: 1rem
+
+}

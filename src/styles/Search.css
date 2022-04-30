@@ -1,0 +1,31 @@
+.search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 1.2rem;
+    max-width: 100vw;
+}
+
+.search-container__h3 {
+    margin-bottom: 2rem;
+}
+
+.galery-container {
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    max-width: 95%;
+    align-items: center;
+    justify-items: center;
+    gap: .8rem;
+}
+
+.galery-container__img {
+    max-width: 90%;
+    box-shadow: 3px 2px 6px #F9F9F9;
+    cursor: pointer;
+}
+
+.galery-container__Link {
+    padding: .5rem 0;
+}

@@ -1,6 +1,7 @@
 //import hooks
 import { useState, useEffect } from 'react';
 //import components
+import SeriesCard from './SeriesCard';
 //import styles
 import '../../styles/Series.css';
 //import Services
@@ -19,7 +20,6 @@ const Series = () => {
     getSeries()
       .then(res => {
         setSeries(res.data.results);  
-        console.log(series)
       })
       .catch(err => {
         handleError('Something went wrong. Please try again later','There was an error getting the series','error');
@@ -40,7 +40,7 @@ const Series = () => {
       >
         {
           series.map((serie) => {
-            return (<SwiperSlide key={serie.id}><img src={`https://image.tmdb.org/t/p/w500/${serie.backdrop_path}`} alt='series-poster'></img></SwiperSlide>);
+            return (<SwiperSlide key={serie.id}><SeriesCard poster={`https://image.tmdb.org/t/p/w500/${serie.backdrop_path}`} id={serie.id} /></SwiperSlide>);
           })
         }
       </Swiper>

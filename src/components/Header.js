@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/Header.css';
 import logo from '../images/logo-app.svg';
+import Searcher from './Searcher';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -26,6 +27,7 @@ const Header = () => {
           <li className='nav-ul__li'><Link to='/originals' >Originals</Link></li>   
         </ul>
       </nav>
+      <Searcher />
       <button className='nav-btn' type='submit' onClick={logoutHandler}>Logout</button>
     </header>
   );
