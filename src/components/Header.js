@@ -21,8 +21,9 @@ const Header = () => {
         <ul className="nav-ul">
           <li className='nav-ul__li'><Link to='/'>Home</Link></li>
           <li className='nav-ul__li'><Link to='/movies'>Peliculas</Link></li>
-          <li className='nav-ul__li'><Link to='/series' >Series</Link></li>      
-          <li className='nav-ul__li'><Link to='/search' >Busqueda</Link></li>
+          <li className='nav-ul__li'><Link to='/series' >Series</Link></li>
+          {/*       
+          <li className='nav-ul__li'><Link to='/search' >Busqueda</Link></li>*/}
           <li className='nav-ul__li'><Link to='/wishlist' >Favoritos</Link></li>
           <li className='nav-ul__li'><Link to='/originals' >Originals</Link></li>   
         </ul>

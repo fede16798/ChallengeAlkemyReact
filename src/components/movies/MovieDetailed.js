@@ -57,7 +57,7 @@ const MovieDetailed = () => {
           </div>
           <h5>Similar</h5>
           <div className='similar-container'> 
-            {(similarMovies.length == 0)? 
+            {(similarMovies.length === 0)? 
               <p className='similar-container__p'>There is no similar movie</p>
             :
               <Swiper
