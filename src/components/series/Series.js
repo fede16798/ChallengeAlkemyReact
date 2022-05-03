@@ -1,7 +1,8 @@
 //import hooks
 import { useState, useEffect } from 'react';
 //import components
-import SeriesCard from './SeriesCard';
+import FilmCard from '../FilmCard.js';
+import Loading from '../Loading.js';
 //import styles
 import '../../styles/Series.css';
 //import Services
@@ -13,6 +14,7 @@ import '../../styles/SwiperSlide.css';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
 
+
 const Series = () => {
   const [series, setSeries] = useState([]);
 
@@ -23,28 +25,24 @@ const Series = () => {
       })
       .catch(err => {
         handleError('Something went wrong. Please try again later','There was an error getting the series','error');
-      });
+      })
   }, [setSeries]);
 
   return (
-    <div className='series-container'>
-      <h3>Series</h3>
-      <Swiper
-        slidesPerView={5}
-        spaceBetween={0}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[Pagination]}
-        className="mySwiper"
-      >
-        {
-          series.map((serie) => {
-            return (<SwiperSlide key={serie.id}><SeriesCard poster={`https://image.tmdb.org/t/p/w500/${serie.backdrop_path}`} id={serie.id} /></SwiperSlide>);
-          })
-        }
-      </Swiper>
-    </div>
+    <>
+    {(series.length === 0) && <h1>Hubo un error</h1>}
+        <div className='series-container'>
+          <h3>Series</h3>
+          <Swiper slidesPerView={5} spaceBetween={0} pagination={{clickable: true,}} modules={[Pagination]} className="mySwiper">
+            {
+              series.map((serie) => {
+                return (<SwiperSlide key={serie.id}><FilmCard poster={`https://image.tmdb.org/t/p/w500/${serie.backdrop_path}`} id={serie.id} mediaType='series'/></SwiperSlide>);
+              })
+            }
+          </Swiper>
+        </div>
+    
+    </>
   );
 }
 

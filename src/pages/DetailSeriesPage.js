@@ -4,14 +4,14 @@ import { Navigate } from 'react-router-dom';
 import DetailsSeries from '../components/series/DetailsSeries.js';
 import Header from '../components/Header';
 
-const DetailMoviePage = () => {
+const DetailMoviePage = ( props ) => {
   const token = localStorage.getItem('token');
 
   return (
     <>
       { !token && <Navigate to='/login' />}
       <Header />
-      <DetailsSeries />
+      <DetailsSeries addOrRemoveMoviesFromFavs={props.addOrRemoveMoviesFromFavs} favMessage={props.favMessage}/>
     </>
   );
 }

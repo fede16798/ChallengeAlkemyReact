@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 //import services
 import  { getMovieById, getSimiliarMovies } from '../../services/Movies.service.js';
 //import component
-import Movie from './Movie.js';
+import FilmCard from '../FilmCard.js';
 //import styles
 import '../../styles/MovieDetailed.css';
 import '../../styles/Movies.css';
@@ -15,11 +15,11 @@ import '../../styles/SwiperSlide.css';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
 
-const MovieDetailed = () => {
+const MovieDetailed = ( props ) => {
   
   let id = useParams().id;
-  
-  const [movie, setMovie] = useState(null);
+
+  const [movie, setMovie] = useState({});
   const [similarMovies, setSimilarMovies] = useState([]);
   
   useEffect(() => {
@@ -53,6 +53,12 @@ const MovieDetailed = () => {
               <h3 className='overview-container__h3'>{movie.original_title}</h3>
               <p className='overview-container__p'>{movie.overview}</p>
               <p>rating: {movie.vote_average}</p>
+              <button id='boton' className='overview-container__button' 
+                onClick={props.addOrRemoveMoviesFromFavs} 
+                movieID={movie.id} 
+                mediaType={'movies'} 
+                img={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
+              >{props.favMessage}</button>
             </div>
           </div>
           <h5>Similar</h5>
@@ -71,7 +77,7 @@ const MovieDetailed = () => {
                 > 
                 {
                   similarMovies.map((movie) => {
-                    return(<SwiperSlide key={movie.id}><Movie poster = {`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} id={movie.id}/></SwiperSlide>)
+                    return(<SwiperSlide key={movie.id}><FilmCard poster = {`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} id={movie.id} mediaType='movies'/></SwiperSlide>)
                   })
                 }
               </Swiper>

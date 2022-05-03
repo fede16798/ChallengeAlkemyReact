@@ -32,12 +32,20 @@ const Search = () => {
             return (
               (movie.media_type === 'movie') ?
                 <Link key={movie.id} to={`/movies/${movie.id}`} className='galery-container__Link'> {
-                  (movie.poster_path == null)? <p>No hay foto</p>:
+                  (movie.poster_path == null)? 
+                  <>
+                    <p className='galery-container__p'>We couldn't find any poster for this movie.</p>
+                    <button className='galery-container__button'>View details</button> 
+                  </>:
                   <img className= 'galery-container__img' src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt='poster'></img>
                 }
                 </Link>:
                 <Link key={movie.id} to={`/series/${movie.id}`} className='galery-container__Link'> {
-                  (movie.poster_path == null)? <p>No hay foto</p>:
+                  (movie.poster_path == null)?  
+                  <>
+                    <p className='galery-container__p'>We couldn't find any poster for this movie.</p>
+                    <button className='galery-container__button'>View details</button> 
+                  </>:
                   <img className= 'galery-container__img' src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt='poster'></img>
                 }
                 </Link>  

@@ -30,6 +30,7 @@
 
 .galery-container__Link {
     padding: .5rem 0;
+    text-decoration: none;
 }
 
 .galery-container__img:hover {
@@ -40,4 +41,24 @@
     font-size: 1.8rem;
     margin-top: 1rem;
     color: #b11111;
+} 
+
+.galery-container__p {
+    font-size: 1.3rem;
+    color: #f3f3f3;
+    text-align: center;
+}
+
+.galery-container__button {
+    background-color: #3449c1;
+    color: white;
+    display: block;
+    margin: auto;
+    margin-top: 5rem;
+    font-size: 1.2rem;
+    padding: 1rem;
+    cursor: pointer;
+    width: 90%;
+    border: none;
+    border-radius: .5rem;
 }

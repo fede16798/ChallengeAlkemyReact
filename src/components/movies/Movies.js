@@ -1,7 +1,8 @@
 //import hooks
 import { useState, useEffect } from 'react';
 //import components
-import Movie from './Movie.js';
+import FilmCard from '../FilmCard.js';
+import Loading from '../Loading.js';
 //import styles
 import '../../styles/Movies.css';
 //import functions
@@ -12,73 +13,77 @@ import '../../styles/SwiperSlide.css';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
 
+
 const Movies = () => {
 
-    const [movies, setMovies] = useState([]);
-    const [moviesTrending, setMoviesTrending] = useState([]);
+	const [movies, setMovies] = useState([]);
+	const [moviesTrending, setMoviesTrending] = useState([]);
+	const [loader, setLoader] = useState(true);
 
-    useEffect(() => {
-        getMovies()
-        .then(res => {
-            setMovies(res.data.results);
-        })  
-        .catch(err => {
-            handleError("Something went wrong. Please try again", "There was an error loading the movies", "error");
-        });
-    }, [setMovies]);
+	useEffect(() => {
+		getMovies()
+			.then(res => {
+				setMovies(res.data.results);
+			})  
+			.catch(err => {
+				handleError("Something went wrong. Please try again", "There was an error loading the movies", "error");
+			})
+			.finally(() =>setTimeout(() => setLoader(false) , 1000))
+	}, [setMovies]);
 
-    useEffect(() => {
-        getTrendingMoviesPerWeek()
-            .then(res => {
-                setMoviesTrending(res.data.results);
-            })
-            .catch(err => {
-                handleError("Something went wrong. Please try again", "There was an error loading the movies", "error"); 
-            })
-    }, [setMoviesTrending]);
+	useEffect(() => {
+		getTrendingMoviesPerWeek()
+			.then(res => {
+				setMoviesTrending(res.data.results);
+			})
+			.catch(err => {
+				handleError("Something went wrong. Please try again", "There was an error loading the movies", "error"); 
+			})
+	}, [setMoviesTrending]);
 
-    return (
-        <div className='movie-container'>
-            <h2>News</h2>
-            {( movies.length == 0 )? <p className='movie-container__p'>There was an error loading the new movies</p>
-            :   
-                <Swiper
-                    slidesPerView={5}
-                    spaceBetween={0}
-                    pagination={{
-                    clickable: true,
-                    }}
-                    modules={[Pagination]}
-                    className='mySwiper'
-                >
-                {
-                    movies.map((movie) => {
-                        return (<SwiperSlide key={movie.id}><Movie poster = {`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} id={movie.id}/></SwiperSlide>)
-                    })
-                }
-                </Swiper>             
-            }
-            <h3>Trending</h3>
-            {( moviesTrending.length == 0 )? <p className='movie-container__p'>There was an error loading the trending movies</p> 
-            :
-            <Swiper
-                slidesPerView={5}
-                spaceBetween={0}
-                pagination={{
-                clickable: true,
-                }}
-                modules={[Pagination]}
-                className="mySwiper"
-            >
-            {
-                moviesTrending.map((movie) => {
-                    return (<SwiperSlide key={movie.id}><Movie poster = {`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} id={movie.id}/></SwiperSlide>)
-                })
-            }
-            </Swiper>
-            }
-        </div>
-    );
+	return (
+		<div className='movie-container'>
+
+			<h2>News</h2>
+				{( movies.length === 0 )? <p className='movie-container__p'>There was an error loading the new movies</p>
+				:   
+				<Swiper
+					slidesPerView={5}
+					spaceBetween={0}
+					pagination={{
+					clickable: true,
+					}}
+					modules={[Pagination]}
+					className='mySwiper'
+				>	
+					{
+						movies.map((movie) => {
+							return (<SwiperSlide key={movie.id}><FilmCard poster = {`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} id={movie.id} mediaType='movies'/></SwiperSlide>)
+						})
+					}
+				</Swiper>             
+				}
+				<h3>Trending</h3>
+				{( moviesTrending.length === 0 )? <p className='movie-container__p'>There was an error loading the trending movies</p> 
+				:
+				<Swiper
+					slidesPerView={5}
+					spaceBetween={0}
+					pagination={{
+					clickable: true,
+					}}
+					modules={[Pagination]}
+					className="mySwiper"
+				>
+				{
+					moviesTrending.map((movie) => {
+						return (<SwiperSlide key={movie.id}><FilmCard poster = {`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} id={movie.id} mediaType='movies'/></SwiperSlide>)
+					})
+				}
+				</Swiper>
+				}
+		</div>
+	);
 }
 
 export default Movies;

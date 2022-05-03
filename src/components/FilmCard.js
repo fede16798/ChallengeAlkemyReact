@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';
 
-const SeriesCard = ({ poster, id }) => {
+const FilmCard = ({ poster, id, mediaType }) => {
   return (
     <>
-      <Link to={`/series/${id}`}>
+      <Link to={`/${mediaType}/${id}`}>
         <img src={poster} alt= 'poster of the series' />
       </Link>
     </>
   );
 }
 
-export default SeriesCard;
+export default FilmCard;

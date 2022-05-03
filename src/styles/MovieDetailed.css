@@ -6,8 +6,8 @@
 .movieDetailed-container {
     display: flex;
     justify-content: center;
-    padding: 1rem;
-}
+    padding: 1rem; 
+  }
 
 .movieDetailed-container__img {
     margin: 2rem 0 2rem 2rem;
@@ -31,6 +31,12 @@
 
 .overview-container__p {
     font-size: 1.2rem;
+}
+
+.overview-container__button {
+    background-color: black;
+    justify-content: end;
+    cursor: pointer;
 }
 
 .similar-container {
