@@ -1,0 +1,28 @@
+.explore-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-row: auto;
+    justify-items: center;
+
+    margin: 0 2rem 1rem;
+    border: 1px solid white;
+}
+
+
+.exploreCard-container {
+    width: 100%;
+    height: 154px;
+    border: 1px solid #fff;
+}
+
+.exploreCard-container a {
+    text-decoration: none;
+}
+
+.exploreCard-container p {
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    margin: 25% 0;
+
+}

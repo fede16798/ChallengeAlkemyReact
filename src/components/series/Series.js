@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react';
 //import components
 import FilmCard from '../FilmCard.js';
-import Loading from '../Loading.js';
 //import styles
 import '../../styles/Series.css';
 //import Services
@@ -14,6 +13,7 @@ import '../../styles/SwiperSlide.css';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
 
+import FilmsCarrousel from '../FilmsCarrousel.js';
 
 const Series = () => {
   const [series, setSeries] = useState([]);
@@ -33,13 +33,7 @@ const Series = () => {
     {(series.length === 0) && <h1>Hubo un error</h1>}
         <div className='series-container'>
           <h3>Series</h3>
-          <Swiper slidesPerView={5} spaceBetween={0} pagination={{clickable: true,}} modules={[Pagination]} className="mySwiper">
-            {
-              series.map((serie) => {
-                return (<SwiperSlide key={serie.id}><FilmCard poster={`https://image.tmdb.org/t/p/w500/${serie.backdrop_path}`} id={serie.id} mediaType='series'/></SwiperSlide>);
-              })
-            }
-          </Swiper>
+          <FilmsCarrousel list={series} mediaType={'series'}/>
         </div>
     
     </>

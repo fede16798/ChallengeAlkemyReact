@@ -3,6 +3,7 @@ import { useState } from 'react';
 //import components
 import Login from '../components/Login.js';
 import Footer from '../components/Footer.js';
+
 //import pages
 import HomePage from '../pages/HomePage.js';
 import DetailMoviePage from '../pages/DetailMoviePage.js';
@@ -11,9 +12,10 @@ import MoviesPage from '../pages/MoviesPage.js';
 import DetailsSeriesPage from '../pages/DetailSeriesPage.js';
 import SearchPage from '../pages/SeachPage.js';
 import WishlistPage from '../pages/WishlistPage.js';
+import ExplorePage from '../pages/ExplorePage.js';
+import ExploreSectionPage from '../pages/ExploreSectionPage.js';
 
 const AppRouter = () => { 
-
   const [favMessage, setFavMessage] = useState('');
   
   function getFavsFromLocalStorage() {
@@ -83,6 +85,8 @@ const AppRouter = () => {
         <Route path='/series/:id' element={<DetailsSeriesPage addOrRemoveMoviesFromFavs={addOrRemoveMoviesFromFavs} favMessage={favMessage} getMensaje={getMensaje}/>} />
         <Route path='/search/:keyword' element={<SearchPage />} />
         <Route path='/wishlist' element={<WishlistPage />} />
+        <Route path='/explore' element={<ExplorePage />} />
+        <Route path='/explore/:genreId' element={<ExploreSectionPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>

@@ -15,8 +15,8 @@ const SeriesPage = () => {
   const [loader, setLoader] = useState(false)
 
   useEffect(() => {
+      mounted.current = true;
       setTimeout(() => setLoader(true) , 1000);
-      mounted.current = true
       console.log('mounted ', mounted);
       return () => {
           mounted.current = false;
@@ -32,7 +32,7 @@ const SeriesPage = () => {
         ) : (
         <div>
           <Header />
-          {(!loader)? (<Loading />) : (
+          {(!mounted.current)? (<Loading />) : (
             <Series />
           )}
         </div> 

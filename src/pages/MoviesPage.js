@@ -28,7 +28,7 @@ const MoviesPage = () => {
         ) : (   
         <div>
           <Header />
-          {(!loader)? (<Loading />) : (
+          {(!mounted.current)? (<Loading />) : (
             <Movies />
           )}
         </div> 
