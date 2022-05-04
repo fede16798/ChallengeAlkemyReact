@@ -21,6 +21,10 @@ const MovieDetailed = ( props ) => {
 
   const [movie, setMovie] = useState({});
   const [similarMovies, setSimilarMovies] = useState([]);
+
+  useEffect(() => {
+    props.getMensaje(id);
+  },[id])
   
   useEffect(() => {
     getMovieById(id)
@@ -48,17 +52,19 @@ const MovieDetailed = ( props ) => {
       { movie &&
         <>
           <div className='movieDetailed-container'>
-            <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt='portada de la peliluca' className='movieDetailed-container__img' />
+            <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt='portada de la pelicula' className='movieDetailed-container__img' />
             <div className='overview-container'>
               <h3 className='overview-container__h3'>{movie.original_title}</h3>
               <p className='overview-container__p'>{movie.overview}</p>
               <p>rating: {movie.vote_average}</p>
-              <button id='boton' className='overview-container__button' 
+              <button 
+                id='boton' 
+                className={`overview-container__button ${props.favMessage == 'Remove from favorites' ? 'red' : ''}`}
                 onClick={props.addOrRemoveMoviesFromFavs} 
                 movieID={movie.id} 
                 mediaType={'movies'} 
                 img={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
-              >{props.favMessage}</button>
+              > {props.favMessage}</button>
             </div>
           </div>
           <h5>Similar</h5>

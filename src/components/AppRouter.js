@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 //import components
 import Login from '../components/Login.js';
 import Footer from '../components/Footer.js';
@@ -12,11 +12,10 @@ import DetailsSeriesPage from '../pages/DetailSeriesPage.js';
 import SearchPage from '../pages/SeachPage.js';
 import WishlistPage from '../pages/WishlistPage.js';
 
-
 const AppRouter = () => { 
 
   const [favMessage, setFavMessage] = useState('');
-
+  
   function getFavsFromLocalStorage() {
     let list = localStorage.getItem('favs')
     if ( list === null ) {
@@ -38,11 +37,21 @@ const AppRouter = () => {
     
     return {id, title, overview, img, mediaType};
   }
-
-  function isMovieInFavs(list, film) {
-    return list.find(oneMovie => {return oneMovie.id === film.id}); 
+  function isMovieInFavs(list, id) {
+    return list.find(oneMovie => {return oneMovie.id === id}); 
   }
+  function getMensaje(id) {
+    let favsTemp = [];
+    favsTemp = getFavsFromLocalStorage();
 
+    let isInFavs = isMovieInFavs(favsTemp, id);
+
+    if (!isInFavs) { 
+      setFavMessage('Add to favorites');
+    } else {
+      setFavMessage('Remove from favorites');
+    }
+  }
   const addOrRemoveMoviesFromFavs = (e) => {
     let favsTemp = [];
     favsTemp = getFavsFromLocalStorage();
@@ -50,30 +59,28 @@ const AppRouter = () => {
     const btn = e.target;
     const movie = getMovieData(btn);
 
-    let isInFavs = isMovieInFavs(favsTemp, movie);
+    let isInFavs = isMovieInFavs(favsTemp, movie.id);
 
     if (!isInFavs) { 
       favsTemp.push(movie);
       localStorage.setItem('favs', JSON.stringify(favsTemp));
-      setFavMessage('Remove from favorites');
-      console.log('se agregó la peli');
+      getMensaje(movie.id)
     } else {
       let moviesLeft = favsTemp.filter(oneMovie => {return oneMovie.id !== movie.id});
       localStorage.setItem('favs', JSON.stringify(moviesLeft));
-      setFavMessage('Add to favorites');
-      console.log('se eliminó la peli');
+      getMensaje(movie.id)
     }
   }
-
+  
   return(
     <BrowserRouter className="AppRouter"  forceRefresh={true}>
       <Routes>
         <Route path='/login' element={<Login />}/>
         <Route path='/' element={<HomePage />}/>
         <Route path='/movies' element={<MoviesPage />} />
-        <Route path='/movies/:id' element={<DetailMoviePage addOrRemoveMoviesFromFavs={addOrRemoveMoviesFromFavs} favMessage={favMessage}/>}  />
+        <Route path='/movies/:id' element={<DetailMoviePage addOrRemoveMoviesFromFavs={addOrRemoveMoviesFromFavs} favMessage={favMessage} getMensaje={getMensaje}/>} />
         <Route path='/series' element={<SeriesPage />} />
-        <Route path='/series/:id' element={<DetailsSeriesPage addOrRemoveMoviesFromFavs={addOrRemoveMoviesFromFavs} favMessage={favMessage}/>} />
+        <Route path='/series/:id' element={<DetailsSeriesPage addOrRemoveMoviesFromFavs={addOrRemoveMoviesFromFavs} favMessage={favMessage} getMensaje={getMensaje}/>} />
         <Route path='/search/:keyword' element={<SearchPage />} />
         <Route path='/wishlist' element={<WishlistPage />} />
       </Routes>

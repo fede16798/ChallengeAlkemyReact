@@ -18,6 +18,10 @@ const DetailsSeries = ( props ) => {
 
   const [oneSeries, setOneSeries] = useState(null);
   const [similarSeries, setSimilarSeries] = useState([]);
+  
+  useEffect(() => {
+    props.getMensaje(id);
+  },[id]);
 
   useEffect(() => {
     getSeriesById(id)
@@ -44,7 +48,7 @@ const DetailsSeries = ( props ) => {
             <h3 className='overview-container__h3'>{oneSeries.original_name}</h3>
             <p className='overview-container__p'>{oneSeries.overview}</p>
             <p>rating: {oneSeries.vote_average}</p>
-            <button className='overview-container__button' onClick={props.addOrRemoveMoviesFromFavs} movieID={oneSeries.id} mediaType={'series'} img={`https://image.tmdb.org/t/p/w500/${oneSeries.backdrop_path}` }>
+            <button className={`overview-container__button ${props.favMessage == 'Remove from favorites' ? "red" : ""}`} onClick={props.addOrRemoveMoviesFromFavs} movieID={oneSeries.id} mediaType={'series'} img={`https://image.tmdb.org/t/p/w500/${oneSeries.backdrop_path}` }>
               {props.favMessage}</button>
           </div>
         </div>

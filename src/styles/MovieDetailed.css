@@ -34,9 +34,12 @@
 }
 
 .overview-container__button {
-    background-color: black;
-    justify-content: end;
+    background-color: green;
     cursor: pointer;
+    border:none;
+    padding: 1rem;
+    margin: 1rem;
+    font-size: 1.2rem;
 }
 
 .similar-container {
@@ -53,4 +56,9 @@ h5 {
     margin-left: 2rem;
     font-size: 1.5rem;
     color: #db1d30;
+}
+
+.red {
+
+    background-color:red;
 }
