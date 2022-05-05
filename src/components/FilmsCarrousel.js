@@ -16,7 +16,7 @@ const FilmsCarrousel = ({ list, mediaType }) => {
       className='mySwiper'
     >	
       {
-        list.map((oneElement) => {
+        list.map( (oneElement) => {
           return (
           <SwiperSlide key={oneElement.id}>
             <FilmCard poster = {`https://image.tmdb.org/t/p/w500/${oneElement.backdrop_path}`} id={oneElement.id} mediaType={mediaType} />

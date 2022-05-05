@@ -12,7 +12,7 @@ const DetailMoviePage = () => {
   const [loader, setLoader] = useState(false);
 
   useEffect(() => {
-      setTimeout(() => setLoader(true) , 1000);
+      setTimeout(() => setLoader(true) , 2000);
     }, []);
   return (
     <>

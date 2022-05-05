@@ -4,13 +4,14 @@ const baseUrl = 'https://api.themoviedb.org/3';
 const apiKey = '44a71ca256a24dd1ea2fbb016327c9c3';
 
 const getMovies =  async () => {
-    const urlGetMovies = `${baseUrl}/discover/movie?api_key=${apiKey}&language=es-ES&page=1`;
+    const urlGetMovies = `${baseUrl}/movie/popular?api_key=${apiKey}&language=es-ES&page=1`;
     let data =  await axios.get(urlGetMovies); 
     return data;   
 }
 
 const getTrendingMoviesPerWeek = async () => {
-    const urlTrendingMovies = `${baseUrl}/trending/movie/day?api_key=${apiKey}`;
+
+    const urlTrendingMovies = `${baseUrl}/trending/movie/week?api_key=${apiKey}`;
     let data = await axios.get(urlTrendingMovies);
     return data;
 }

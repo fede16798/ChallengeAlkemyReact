@@ -83,7 +83,7 @@ const AppRouter = () => {
         <Route path='/movies/:id' element={<DetailMoviePage addOrRemoveMoviesFromFavs={addOrRemoveMoviesFromFavs} favMessage={favMessage} getMensaje={getMensaje}/>} />
         <Route path='/series' element={<SeriesPage />} />
         <Route path='/series/:id' element={<DetailsSeriesPage addOrRemoveMoviesFromFavs={addOrRemoveMoviesFromFavs} favMessage={favMessage} getMensaje={getMensaje}/>} />
-        <Route path='/search/:keyword' element={<SearchPage />} />
+        <Route path='/search' element={<SearchPage />} />
         <Route path='/wishlist' element={<WishlistPage />} />
         <Route path='/explore' element={<ExplorePage />} />
         <Route path='/explore/:keyword' element={<ExploreSectionPage />} />

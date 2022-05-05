@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/Header.css';
 import logo from '../images/logo-app.svg';
-import Searcher from './Searcher';
+import Searcher from './search/Searcher';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -20,14 +20,13 @@ const Header = () => {
       <nav className="nav">
         <ul className="nav-ul">
           <li className='nav-ul__li'><Link to='/'>Home</Link></li>
-          <li className='nav-ul__li'><Link to='/movies'>Peliculas</Link></li>
+          <li className='nav-ul__li'><Link to='/movies'>Movies</Link></li>
           <li className='nav-ul__li'><Link to='/series' >Series</Link></li>
           <li className='nav-ul__li'><Link to='/explore' >Explore</Link></li>
-          <li className='nav-ul__li'><Link to='/wishlist' >Favoritos</Link></li>
-          <li className='nav-ul__li'><Link to='/originals' >Originals</Link></li>   
+          <li className='nav-ul__li'><Link to='/wishlist' >Favorites</Link></li>
+          <li className='nav-ul__li'><Link to='/search' >Search</Link></li>   
         </ul>
       </nav>
-      <Searcher />
       <button className='nav-btn' type='submit' onClick={logoutHandler}>Logout</button>
     </header>
   );

@@ -1,13 +1,17 @@
 .search-form {
-    background-color: #fff; 
     height: 100%;
-    width: 400px;
-    margin-right: 5rem;
+    width: 90vw;
+    margin: 0 3rem;
+    padding: 2rem 0;
+
 }
 .search-form__input {
-    background-color: #fff; 
+    background-color: #1a1d29; 
     height: 100%;
     width: 100%;
-    color: black;    padding: 1rem
-
+    color: #fff;    
+    border: none;
+    border-bottom: 1px solid #aaa;
+    padding: 1rem;
+    font-size: 2.5rem;
 }
