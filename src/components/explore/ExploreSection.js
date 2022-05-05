@@ -1,28 +1,52 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import {getFilmsByGenresAndMediaType} from '../../services/Explore.service.js';
+import {getFilmsByGenresAndMediaType, getGenreById} from '../../services/Explore.service.js';
 import FilmsCarrousel from '../FilmsCarrousel.js';
+import handleError from '../../handleErrors/HandleError.js'
 
 const ExploreSection = () => {
-  let genreId = useParams().genreId;
+  let typeTv = 'tv';
+  let typeMovie = 'movie';
+
+  let keyword = useParams().keyword;
   const [seriesList, setSeriesList] = useState([]);
   const [moviesList, setMoviesList] = useState([]);
-  
-  useEffect(() => {
-    getFilmsByGenresAndMediaType(genreId, 'movie')
-      .then(res => {
-        setMoviesList(res.data.results);
-      })
-      .catch(err => {console.log(err)});
-  }, [genreId])
+
+  const getGenreName = async (keyword,typeMedia) => {
+    let res = await getGenreById(typeMedia);
+    let genres = res.data.genres;
+    return genres.find(oneGenre => { return oneGenre.name.includes(keyword) });
+  }
 
   useEffect(() => {
-    getFilmsByGenresAndMediaType(genreId, 'tv')
-      .then(res => {
-        setSeriesList(res.data.results);
-      })
-      .catch(err => {console.log(err)});
-  }, [genreId])
+    const getData = async (keyword, typeMovie) => {
+      try {
+        let res = await getGenreName(keyword,typeMovie);
+        let genre = res.id;
+        let films = await getFilmsByGenresAndMediaType(genre, typeMovie);
+        setMoviesList(films.data.results);    
+      } catch (err) {
+        handleError("Something went wrong. Please try again", "There was an error loading the movies", "error");
+        console.log(err);
+      }
+    }
+    getData(keyword, typeMovie);
+  }, [keyword])
+
+  useEffect(() => {  
+    const getData = async (keyword, typeTv) => {
+      try {
+        let res = await getGenreName(keyword,typeTv);
+        let genre = res.id;
+        let films = await getFilmsByGenresAndMediaType(genre, typeTv);
+        setSeriesList(films.data.results);    
+      } catch (err) {
+        handleError("Something went wrong. Please try again", "There was an error loading the movies", "error");
+        console.log(err);
+      }
+    }
+    getData(keyword, typeTv);
+  }, [keyword])
 
   return(
     <>

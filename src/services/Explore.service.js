@@ -9,8 +9,13 @@ const getFilmsByGenresAndMediaType = async (genreId, type) => {
 }
 
 const getGenres = async () => {
-    let request = await axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=44a71ca256a24dd1ea2fbb016327c9c3&language=en-US`);
+    let request = await axios.get(`${baseUrl}/genre/movie/list?api_key=${apiKey}&language=en-US`);
     return request;
 }
 
-export { getGenres, getFilmsByGenresAndMediaType } ;
+const getGenreById = async (type) => {
+    let request = await axios.get(`${baseUrl}/genre/${type}/list?api_key=${apiKey}&language=en-US`);
+    return request;
+}
+
+export { getGenres, getFilmsByGenresAndMediaType, getGenreById } ;

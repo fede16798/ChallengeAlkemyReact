@@ -86,7 +86,7 @@ const AppRouter = () => {
         <Route path='/search/:keyword' element={<SearchPage />} />
         <Route path='/wishlist' element={<WishlistPage />} />
         <Route path='/explore' element={<ExplorePage />} />
-        <Route path='/explore/:genreId' element={<ExploreSectionPage />} />
+        <Route path='/explore/:keyword' element={<ExploreSectionPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>

@@ -4,7 +4,6 @@ import {getGenres} from '../../services/Explore.service.js';
 import ExploreCard from './ExploreCard.js';
 
 const Explore = () => {
-
   const [genres, setGenres] = useState([]);
   useEffect(() =>{
     getGenres()
@@ -18,8 +17,8 @@ const Explore = () => {
         (genres.length === 0)? console.log('loading...'):
         genres.map((genre) => {
             return (
-              <div className='exploreCard-container'>
-                <ExploreCard key={genre.id} mediaType={'movie'} genre={genre} />
+              <div className='exploreCard-container' key={genre.id}>
+                <ExploreCard mediaType={'movie'} genre={genre} />
               </div>
             );
           })
