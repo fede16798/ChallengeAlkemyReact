@@ -20,6 +20,7 @@
 .logo-container img{
     height: 104px;
     width: 172px;
+    box-shadow: none;
 }
 
 .form {

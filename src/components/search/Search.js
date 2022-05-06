@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import getFilmByWord from '../../services/Search.service.js';
-import {getMovies} from '../../services/Movies.service.js';
+import {getSeries} from '../../services/Series.service.js';
 import handleError from '../../handleErrors/HandleError.js';
 import { Link } from 'react-router-dom';
 
@@ -13,7 +13,7 @@ const Search = ({ keyword }) => {
   useEffect(() =>{
     async function getData() {
       try{
-        let res = await getMovies();
+        let res = await getSeries();
         setFilms(res.data.results);
       }
       catch (err) {
