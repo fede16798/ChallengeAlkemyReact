@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
+//import styles and logo
 import '../styles/Header.css';
 import logo from '../images/logo-app.svg';
-import Searcher from './search/Searcher';
 
 const Header = () => {
   const navigate = useNavigate();

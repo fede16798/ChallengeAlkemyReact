@@ -1,3 +1,4 @@
+//import styles and logo
 import '../styles/Footer.css';
 import logo from '../images/logo-app.svg';
 

@@ -5,7 +5,7 @@ import '../../styles/Movies.css';
 //import functions
 import handleError from '../../handleErrors/HandleError.js';
 import  { getMovies, getTrendingMoviesPerWeek } from '../../services/Movies.service.js';
-
+//import components
 import FilmsCarrousel from '../FilmsCarrousel.js';
 
 const Movies = () => {
@@ -50,30 +50,3 @@ const Movies = () => {
 }
 
 export default Movies;
-
-    /*const navigate = useNavigate();
-
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-        if(!token) {
-            console.log('Ejecucion');
-            navigate('/login');
-        }
-    })
-    */
-
-	/*<Swiper
-					slidesPerView={5}
-					spaceBetween={0}
-					pagination={{
-					clickable: true,
-					}}
-					modules={[Pagination]}
-					className='mySwiper'
-				>	
-					{
-						movies.map((movie) => {
-							return (<SwiperSlide key={movie.id}><FilmCard poster = {`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} id={movie.id} mediaType='movies'/></SwiperSlide>)
-						})
-					}
-				</Swiper>        */     

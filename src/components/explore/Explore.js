@@ -1,6 +1,10 @@
+//import hooks
 import { useState, useEffect } from 'react';
+//import styles
 import '../../styles/Explore.css';
+//import services
 import {getGenres} from '../../services/Explore.service.js';
+//import componentes
 import ExploreCard from './ExploreCard.js';
 
 const Explore = () => {

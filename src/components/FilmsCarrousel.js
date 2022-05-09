@@ -2,6 +2,7 @@
 import '../styles/SwiperSlide.css';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
+//import component
 import FilmCard from './FilmCard.js';
 
 const FilmsCarrousel = ({ list, mediaType }) => {

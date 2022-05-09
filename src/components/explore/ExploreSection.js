@@ -1,6 +1,9 @@
+//import hooks
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+//import services
 import {getFilmsByGenresAndMediaType, getGenreById} from '../../services/Explore.service.js';
+//import componentes and functions
 import FilmsCarrousel from '../FilmsCarrousel.js';
 import handleError from '../../handleErrors/HandleError.js'
 

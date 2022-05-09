@@ -1,8 +1,11 @@
+//import hooks and funcionalities
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+//import services
 import getFilmByWord from '../../services/Search.service.js';
 import {getSeries} from '../../services/Series.service.js';
+//import funcion
 import handleError from '../../handleErrors/HandleError.js';
-import { Link } from 'react-router-dom';
 
 import '../../styles/Search.css';
 

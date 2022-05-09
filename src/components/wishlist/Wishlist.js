@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 //import components
 import FilmCard from '../FilmCard.js';
+//import style
 import '../../styles/Wishlist.css';
 
 

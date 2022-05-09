@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import '../../styles/ExploreCard.css';
 
 const ExploreCard = ({ genre }) => {
   return (

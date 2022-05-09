@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
+//import snackbar
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
-import '../styles/SnackBar.css';
 
 const Alert = forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;

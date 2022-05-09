@@ -1,18 +1,11 @@
 //import hooks
 import { useState, useEffect } from 'react';
-//import components
-import FilmCard from '../FilmCard.js';
 //import styles
 import '../../styles/Series.css';
 //import Services
 import { getSeries } from '../../services/Series.service.js';
 //import HandleError
 import handleError from '../../handleErrors/HandleError.js';
-//import Swiper
-import '../../styles/SwiperSlide.css';
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper";
-
 import FilmsCarrousel from '../FilmsCarrousel.js';
 
 const Series = () => {
